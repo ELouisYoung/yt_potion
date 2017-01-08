@@ -7,7 +7,8 @@ defmodule YtPotion.Mixfile do
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps()]
+     deps: deps(),
+     package: package()]
   end
 
   # Configuration for the OTP application
@@ -17,6 +18,14 @@ defmodule YtPotion.Mixfile do
     [applications: [:logger]]
   end
 
+  defp package do
+    [
+      files: ["lib", "mix.exs", "README", "LICENSE*"],
+      maintainers: ["Bruce Park"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/treble37/yt_potion"}
+    ]
+  end
   # Dependencies can be Hex packages:
   #
   #   {:mydep, "~> 0.3.0"}
@@ -27,6 +36,6 @@ defmodule YtPotion.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [{:httpoison, "~> 0.10.0"}]
   end
 end
