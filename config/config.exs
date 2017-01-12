@@ -28,3 +28,6 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
+
+config :yt_potion, YtPotion,
+  yt_api_key: System.get_env("YT_API_KEY")
