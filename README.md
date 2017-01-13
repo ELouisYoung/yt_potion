@@ -22,3 +22,9 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
     end
     ```
 
+  3. In your config.exs file in your Phoenix app:
+
+  ```elixir
+  config :yt_potion, YtPotion,
+    yt_api_key: System.get_env("YT_API_KEY")
+  ```
