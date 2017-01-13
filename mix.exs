@@ -7,6 +7,7 @@ defmodule YtPotion.Mixfile do
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     description: description(),
      deps: deps(),
      package: package()]
   end
@@ -26,6 +27,13 @@ defmodule YtPotion.Mixfile do
       links: %{"GitHub" => "https://github.com/treble37/yt_potion"}
     ]
   end
+
+  defp description do
+    """
+    YouTube v3 Data API Wrapper
+    """
+  end
+
   # Dependencies can be Hex packages:
   #
   #   {:mydep, "~> 0.3.0"}
@@ -36,7 +44,8 @@ defmodule YtPotion.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:httpoison, "~> 0.10.0"},
+    [{:ex_doc, ">= 0.0.0", only: :dev},
+     {:httpoison, "~> 0.10.0"},
      {:json, "~> 1.0"}]
   end
 end
