@@ -27,6 +27,7 @@ defmodule YtPotion.Video do
       status_code: 200}}
   """
 
+  @spec list(Map, String.t) :: Map #HTTPoison.Response{}
   def list(filters, part) do
     get_request("videos", Map.merge(filters, %{part: part}))
   end

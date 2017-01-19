@@ -28,6 +28,7 @@ defmodule YtPotion.Channel do
 
   """
 
+  @spec list(Map, String.t) :: Map #HTTPoison.Response{}
   def list(filters, part) do
     # channel_ids "UC0PEAMcRK7Mnn2G1bCBXOWQ,UCyMafjsLsswLvsd4u_ilprQ"
     get_request("channels", Map.merge(filters, %{part: part}))
