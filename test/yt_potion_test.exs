@@ -2,7 +2,8 @@ defmodule YtPotionTest do
   use ExUnit.Case
   doctest YtPotion
 
-  test "the truth" do
-    assert 1 + 1 == 2
+  test "gets current configurations" do
+    config = YtPotion.config
+    assert Keyword.has_key?(config, :yt_api_key)
   end
 end
