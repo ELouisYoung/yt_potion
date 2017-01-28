@@ -1,34 +1,32 @@
 defmodule YtPotion.Video do
   import YtPotion
+  import YtPotion.Parser
 
   @moduledoc """
-  Provides methods to interact with the YouTube Channels API
+  Provides methods to interact with the YouTube Videos API
   """
 
   @doc """
 
-  Returns an HTTPotion response containing the YouTube API response
+  Returns a list containing the YouTube API response; multiple list items are
+  returned for multiple video ids
 
   ##Examples
 
     iex > YtPotion.Video.list(%{id: "gben9fsNYTM,LTke1j_fkLc"}, "statistics")
-
-    {:ok,
-     %HTTPoison.Response{body: "{\n \"kind\": \"youtube#videoListResponse\",\n \"etag\": \"\\\"gMxXHe-zinKdE9lTnzKu8vjcmDI/fY-UYUPvELOAPvePaCpJgp2SQB8\\\"\",\n \"pageInfo\": {\n  \"totalResults\": 2,\n  \"resultsPerPage\": 2\n },\n \"items\": [\n  {\n   \"kind\": \"youtube#video\",\n   \"etag\": \"\\\"gMxXHe-zinKdE9lTnzKu8vjcmDI/OZzMLeF1dyinTtu6FFysFmdhrbc\\\"\",\n   \"id\": \"gben9fsNYTM\",\n   \"statistics\": {\n    \"viewCount\": \"117855\",\n    \"likeCount\": \"1202\",\n    \"dislikeCount\": \"44\",\n    \"favoriteCount\": \"0\",\n    \"commentCount\": \"59\"\n   }\n  },\n  {\n   \"kind\": \"youtube#video\",\n   \"etag\": \"\\\"gMxXHe-zinKdE9lTnzKu8vjcmDI/kFlsq9cMIJ5BnxFp2Bm8QNE-F1Q\\\"\",\n   \"id\": \"LTke1j_fkLc\",\n   \"statistics\": {\n    \"viewCount\": \"72391\",\n    \"likeCount\": \"723\",\n    \"dislikeCount\": \"7\",\n    \"favoriteCount\": \"0\",\n    \"commentCount\": \"112\"\n   }\n  }\n ]\n}\n",
-      headers: [{"Expires", "Fri, 13 Jan 2017 18:48:27 GMT"},
-       {"Date", "Fri, 13 Jan 2017 18:48:27 GMT"},
-       {"Cache-Control", "private, max-age=0, must-revalidate, no-transform"},
-       {"ETag", "\"gMxXHe-zinKdE9lTnzKu8vjcmDI/fY-UYUPvELOAPvePaCpJgp2SQB8\""},
-       {"Vary", "Origin"}, {"Vary", "X-Origin"},
-       {"Content-Type", "application/json; charset=UTF-8"},
-       {"X-Content-Type-Options", "nosniff"}, {"X-Frame-Options", "SAMEORIGIN"},
-       {"X-XSS-Protection", "1; mode=block"}, {"Content-Length", "764"},
-       {"Server", "GSE"}, {"Alt-Svc", "quic=\":443\"; ma=2592000; v=\"35,34\""}],
-      status_code: 200}}
+    [%{"etag" => "\"gMxXHe-zinKdE9lTnzKu8vjcmDI/RItoE8lPFz5nGIw8tVfUxP28ayQ\"",
+       "id" => "gben9fsNYTM", "kind" => "youtube#video",
+       "statistics" => %{"commentCount" => "71", "dislikeCount" => "47",
+         "favoriteCount" => "0", "likeCount" => "1345", "viewCount" => "137288"}},
+     %{"etag" => "\"gMxXHe-zinKdE9lTnzKu8vjcmDI/dmJoW7sywGPqkBqofJS-Ak59ytM\"",
+       "id" => "LTke1j_fkLc", "kind" => "youtube#video",
+       "statistics" => %{"commentCount" => "112", "dislikeCount" => "8",
+         "favoriteCount" => "0", "likeCount" => "727", "viewCount" => "72789"}}]
   """
 
   @spec list(Map, String.t) :: Map #HTTPoison.Response{}
   def list(filters, part) do
     get_request("videos", Map.merge(filters, %{part: part}))
+    |> parse_json_body
   end
 end

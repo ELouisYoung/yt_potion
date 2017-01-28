@@ -4,9 +4,12 @@ defmodule YtPotion.Parser do
     parse_items_response(json_data)
   end
 
-  defp parse_items_response(json_data = %{"error" => _params}), do: raise_http_error("YT API error: #{json_data}")
+  def parse_items_response(json_data = %{"error" => _params}) do
+    {_, json_data } = JSON.encode(json_data)
+    raise_http_error("YT API error: #{json_data}")
+  end
 
-  defp parse_items_response(json_data = %{"items" => _params}), do: json_data["items"]
+  def parse_items_response(json_data = %{"items" => _params}), do: json_data["items"]
 
   defp raise_http_error(message) do
     raise %HTTPoison.Error{id: nil, reason: message}
