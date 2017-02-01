@@ -1,4 +1,5 @@
 defmodule YtPotion.Video do
+  import YtPotion
 
   @moduledoc """
   Provides methods to interact with the YouTube Videos API
@@ -6,12 +7,11 @@ defmodule YtPotion.Video do
 
   @doc """
 
-  Returns a list containing the YouTube API response; multiple list items are
-  returned for multiple video ids
+  Returns the YouTube API response
 
   ## Examples
 
-    iex > YtPotion.Video.list(%{id: "gben9fsNYTM,LTke1j_fkLc"}, "statistics")
+    iex > YtPotion.Video.list(%{id: "gben9fsNYTM,LTke1j_fkLc", part: "statistics"})
 
     {:ok,
      %HTTPoison.Response{body: "{\n \"kind\": \"youtube#videoListResponse\",\n \"etag\": \"\\\"gMxXHe-zinKdE9lTnzKu8vjcmDI/VkN1rb33o20QpEbqSoDYD_uBVhk\\\"\",\n \"pageInfo\": {\n  \"totalResults\": 2,\n  \"resultsPerPage\": 2\n },\n \"items\": [\n  {\n   \"kind\": \"youtube#video\",\n   \"etag\": \"\\\"gMxXHe-zinKdE9lTnzKu8vjcmDI/4iGPLnHQ0TP8qMdCSoYGmZDc0kY\\\"\",\n   \"id\": \"gben9fsNYTM\",\n   \"statistics\": {\n    \"viewCount\": \"142517\",\n    \"likeCount\": \"1384\",\n    \"dislikeCount\": \"47\",\n    \"favoriteCount\": \"0\",\n    \"commentCount\": \"76\"\n   }\n  },\n  {\n   \"kind\": \"youtube#video\",\n   \"etag\": \"\\\"gMxXHe-zinKdE9lTnzKu8vjcmDI/MZfxDD4YW6qu4n4TazWHAvc8mqU\\\"\",\n   \"id\": \"LTke1j_fkLc\",\n   \"statistics\": {\n    \"viewCount\": \"72923\",\n    \"likeCount\": \"731\",\n    \"dislikeCount\": \"8\",\n    \"favoriteCount\": \"0\",\n    \"commentCount\": \"112\"\n   }\n  }\n ]\n}\n",
@@ -28,8 +28,8 @@ defmodule YtPotion.Video do
 
   """
 
-  @spec list(Map, String.t) :: Map #HTTPoison.Response{}
-  def list(filters, part) do
-    get_request("videos", Map.merge(filters, %{part: part}))
+  @spec list(map, map) :: map #HTTPoison.Response{}
+  def list(filter_part, options \\ %{}) do
+    get_request("videos", Map.merge(filter_part, options))
   end
 end

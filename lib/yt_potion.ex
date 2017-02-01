@@ -10,7 +10,7 @@ defmodule YtPotion do
 
   if !Application.get_env(:yt_potion, YtPotion), do: raise "YtPotion is not configured"
 
-  @spec get_request(String.t, String.t) :: Map #HTTPoison.Response{}
+  @spec get_request(String.t, map) :: map #HTTPoison.Response{}
   def get_request(url_part, query_opts) do
     HTTPoison.get(base_url(url_part), [], params: Map.merge(query_opts, %{key: YtPotion.config(:yt_api_key)}))
   end
