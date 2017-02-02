@@ -11,6 +11,8 @@ defmodule YtPotion.Video do
 
   ## Examples
 
+  ```elixir
+
     iex > YtPotion.Video.list(%{id: "gben9fsNYTM,LTke1j_fkLc", part: "statistics"})
 
     {:ok,
@@ -25,6 +27,8 @@ defmodule YtPotion.Video do
        {"X-XSS-Protection", "1; mode=block"}, {"Content-Length", "764"},
        {"Server", "GSE"}, {"Alt-Svc", "quic=\":443\"; ma=2592000; v=\"35,34\""}],
       status_code: 200}}
+
+  ```
 
   """
 

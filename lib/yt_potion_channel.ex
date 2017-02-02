@@ -11,6 +11,8 @@ defmodule YtPotion.Channel do
 
   ## Examples
 
+  ```elixir
+
     iex > YtPotion.Channel.list(%{id: "UC0PEAMcRK7Mnn2G1bCBXOWQ,UCyMafjsLsswLvsd4u_ilprQ", part: "statistics"})
 
     {:ok,
@@ -26,6 +28,7 @@ defmodule YtPotion.Channel do
        {"Server", "GSE"}, {"Alt-Svc", "quic=\":443\"; ma=2592000; v=\"35,34\""}],
       status_code: 200}}
 
+  ```
   """
 
   @spec list(map, map) :: map #HTTPoison.Response{}

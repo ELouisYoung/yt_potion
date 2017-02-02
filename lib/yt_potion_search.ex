@@ -11,6 +11,8 @@ defmodule YtPotion.Search do
 
   ## Examples
 
+  ```elixir
+
     iex > YtPotion.Search.list(%{part: "snippet"}, %{channelId: "UC0PEAMcRK7Mnn2G1bCBXOWQ", maxResults: "2", type: "video", order: "date")
 
   {:ok,
@@ -25,6 +27,8 @@ defmodule YtPotion.Search do
      {"X-XSS-Protection", "1; mode=block"}, {"Content-Length", "2302"},
      {"Server", "GSE"}, {"Alt-Svc", "quic=\":443\"; ma=2592000; v=\"35,34\""}],
     status_code: 200}}
+
+  ```
 
   """
 
