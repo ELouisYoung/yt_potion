@@ -1,9 +1,9 @@
-defmodule YtPotionTest do
+defmodule YtPotion.Config.Test do
   use ExUnit.Case
-  doctest YtPotion
+  doctest YtPotion.Config
 
   test "gets current configurations" do
-    config = YtPotion.config
+    config = YtPotion.Config.config
     assert Keyword.has_key?(config, :yt_api_key)
   end
 end

@@ -1,5 +1,5 @@
 defmodule YtPotion.Video do
-  import YtPotion
+  import YtPotion.Base
 
   @moduledoc """
   Provides methods to interact with the YouTube Videos API
