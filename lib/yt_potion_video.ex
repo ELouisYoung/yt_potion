@@ -33,7 +33,7 @@ defmodule YtPotion.Video do
   """
 
   @spec list(map, map) :: map #HTTPoison.Response{}
-  def list(filter_part, options \\ %{}) do
+  yt_macro_call list(filter_part, options \\ %{}) do
     get_request("videos", Map.merge(filter_part, options))
   end
 end
