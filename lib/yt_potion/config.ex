@@ -1,6 +1,6 @@
 defmodule YtPotion.Config do
   def config, do: Application.get_env(:yt_potion, YtPotion)
-  def config(key), do: Keyword.get(config, key)
+  def config(key), do: Keyword.get(config(), key)
 
   if !Application.get_env(:yt_potion, YtPotion), do: raise "YtPotion is not configured"
 end

@@ -3,8 +3,8 @@ defmodule YtPotion.Mixfile do
 
   def project do
     [app: :yt_potion,
-     version: "0.1.3",
-     elixir: "~> 1.3",
+     version: "0.1.4",
+     elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      description: description(),
@@ -24,7 +24,7 @@ defmodule YtPotion.Mixfile do
       files: ["lib", "mix.exs", "README", "LICENSE*"],
       maintainers: ["Bruce Park"],
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/treble37/yt_potion"}
+      links: %{"GitHub" => "https://github.com/ELouisYoung/yt_potion"}
     ]
   end
 
@@ -45,7 +45,7 @@ defmodule YtPotion.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [{:ex_doc, ">= 0.0.0", only: :dev},
-     {:httpoison, "~> 0.10.0"},
-     {:json, "~> 1.0"}]
+     {:httpoison, "~> 1.3"},
+     {:json, "~> 1.2"}]
   end
 end

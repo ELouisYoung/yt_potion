@@ -19,3 +19,5 @@ erl_crash.dump
 # Ignore .env file with api key
 
 .env
+.hex
+.mix

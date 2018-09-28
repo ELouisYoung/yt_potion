@@ -1,5 +1,5 @@
 defmodule YtPotion.Parser do
-  def parse_json_items({status, response} = {_, %HTTPoison.Response{}}) do
+  def parse_json_items({_status, response} = {_, %HTTPoison.Response{}}) do
     { _, json_data } = JSON.decode(response.body)
     parse_items_response(json_data)
   end
